@@ -1,0 +1,21 @@
+<div style="width: 100vw; height: 100vh;">
+  <div class="top">
+    <mat-toolbar style="height: 100%; background-color: #FFFFFF;">
+      <app-layout-header></app-layout-header>
+    </mat-toolbar>
+  </div>
+  <div class="left">
+    <app-layout-leftbar></app-layout-leftbar>
+  </div>
+  <div class="right">
+    <app-layout-rightbar></app-layout-rightbar>
+  </div>
+  <div class="main">
+    <!--<p>Main content</p>-->
+    <!--<app-example-getdesigns></app-example-getdesigns>-->
+    <app-preview-grid [fullscreen]="false" [editMode]="true"></app-preview-grid>
+  </div>
+  <div class="attribute-picker">
+    <app-attribute-picker></app-attribute-picker>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.widget {
+  padding: 6px;
+}
+
+.flex-one {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.flex-two {
+  flex: 1 0 auto;
+  display: flex;
+  width: 90%;
+  // justify-content: center;
+  // align-items: center;
+}
+.childWidget {
+  width: 100%;
+  height: 100%;
+}

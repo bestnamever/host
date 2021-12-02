@@ -1,0 +1,207 @@
+<div style="overflow-x: hidden; height: 100%;">
+  <div hidden class="top_info">
+    <div class="icon">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" class="home_icon">home</mat-icon>
+      Homepage
+      <!-- <Homepage> as name will be the paramter sent by preview -->
+    </div>
+  </div>
+  <!--<mat-divider class="material-devider"></mat-divider>-->
+  <div class="screen_body">
+    <div class="content">
+      <mat-accordion displayMode="flat" multi style="box-shadow: none;">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header style="border-bottom: 1px solid #E5E5E5; background-color: #F5F5F5;  height: 48px;">
+            <mat-panel-title>Page properties</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <form class="form">
+              <mat-form-field class="page_name" appearance="outline" floatLabel="always">
+                <mat-label>Page name</mat-label>
+                <input matInput placeholder="Ex. Homepage" value={{homepage}}>
+                <!--value will be passed by the preview-->
+              </mat-form-field>
+            </form>
+            <div class="set_homepage">
+              <mat-checkbox [labelPosition]="'before'">
+                {{ setHomepage }}
+              </mat-checkbox>
+            </div>
+            <div class="in_navigation">
+              <mat-checkbox [labelPosition]="'before'">
+                {{ isInNavigation }}
+              </mat-checkbox>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header style="border-bottom: 1px solid #E5E5E5; background-color: #F5F5F5;  height: 48px;">
+            <mat-panel-title>Screen properties</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <div class="device">
+              <div [hidden]="phoneSelected == undefined">
+                <div class="flex">
+                  <!--Screen selection-->
+                  <mat-form-field appearance="outline" class="form">
+                    <mat-label>Display on the device</mat-label>
+                    <mat-select #chosenPhoneSetting disableOptionCentering [value]="phoneSelected"
+                                (valueChange)="change(chosenPhoneSetting.value)">
+                      <mat-option *ngFor="let property of phoneOptionList" [value]="property.value">
+                        {{property.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div style="margin-top: 8px">
+                    <mat-button-toggle-group [disabled]="phoneOptions?.phoneType == undefined" [value]="(phoneOptions?.phoneType == undefined) ? undefined : phoneOrientation" [(ngModel)]="phoneOrientation">
+                      <mat-button-toggle [value]="0" (change)="this.changeOrientation('PORTRAIT')">
+                        <mat-icon>stay_current_portrait</mat-icon>
+                      </mat-button-toggle>
+                      <mat-button-toggle [value]="1" (change)="this.changeOrientation('LANDSCAPE')" style="padding: -4px">
+                        <mat-icon>stay_current_landscape</mat-icon>
+                      </mat-button-toggle>
+                    </mat-button-toggle-group>
+                  </div>
+                </div>
+              </div>
+              <div [hidden]='phoneSelected != undefined'>
+                <div class="flex" style="justify-content: start;">
+                  <mat-form-field class="form" appearance="outline" style="max-width: 48%;">
+                    <mat-label>Width</mat-label>
+                    <input matInput type="number" min="1" placeholder="Width" [(ngModel)]="this.customWidth" (ngModelChange)="updatePhoneCustomSize()">
+                    <!--value will be passed by the preview-->
+                  </mat-form-field>
+                  <mat-form-field class="form" appearance="outline" style="max-width: 48%;">
+                    <mat-label>Height</mat-label>
+                    <input matInput type="number" min="1" placeholder="Height" [(ngModel)]="this.customHeight" (ngModelChange)="updatePhoneCustomSize()">
+                    <!--value will be passed by the preview-->
+                  </mat-form-field>
+                </div>
+              </div>
+              <div>
+                <mat-checkbox (click)='showHideCustom()' [labelPosition]="'before'">
+                  {{ customScreenSize }}
+                </mat-checkbox>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header style="border-bottom: 1px solid #E5E5E5; background-color: #F5F5F5; height: 48px;">
+            <mat-panel-title>Advanced Settings</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div id="advanced-options" style="margin-top: 20px;">
+            <div>
+              <mat-form-field appearance="outline" class="safe_space_form">
+                <mat-label>Screen safe space(padding)</mat-label>
+                <mat-select disabled disableOptionCentering>
+                  <mat-option value="one">2px</mat-option>
+                  <mat-option value="two">4px</mat-option>
+                  <mat-option value="three">6px</mat-option>
+                  <mat-option value="four">8px</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="safe_space">
+              <mat-checkbox disabled [labelPosition]="'before'">
+                {{ safeSpace }}
+              </mat-checkbox>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <!--<div class="title" style="margin-top: 40px;">Page properties</div>
+      <form class="form">
+        <mat-form-field class="page_name" appearance="outline" floatLabel="always">
+          <mat-label>Page name</mat-label>
+          <input matInput placeholder="Ex. Homepage" value={{homepage}}>
+          &lt;!&ndash; value will be passed by the preview &ndash;&gt;
+        </mat-form-field>
+      </form>
+      <div class="set_homepage">
+        <mat-checkbox [labelPosition]="'before'">
+          {{ setHomepage }}
+        </mat-checkbox>
+      </div>
+      <div class="in_navigation">
+        <mat-checkbox [labelPosition]="'before'">
+          {{ isInNavigation }}
+        </mat-checkbox>
+      </div>
+      <div class="title" style="margin-top: 40px;">Screen properties</div>
+      <div class="device">
+        <div [hidden]="phoneSelected == undefined">
+          <div class="flex">
+            &lt;!&ndash; Screen selection &ndash;&gt;
+            <mat-form-field appearance="outline" class="form">
+              <mat-label>Display on the device</mat-label>
+              <mat-select #chosenPhoneSetting disableOptionCentering [value]="phoneSelected"
+                          (valueChange)="change(chosenPhoneSetting.value)">
+                <mat-option *ngFor="let property of phoneOptionList" [value]="property.value">
+                  {{property.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div style="margin-top: 8px">
+              <mat-button-toggle-group [disabled]="phoneOptions?.phoneType == undefined" [value]="(phoneOptions?.phoneType == undefined) ? undefined : phoneOrientation" [(ngModel)]="phoneOrientation">
+                <mat-button-toggle [value]="0" (change)="this.changeOrientation('PORTRAIT')">
+                  <mat-icon>stay_current_portrait</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle [value]="1" (change)="this.changeOrientation('LANDSCAPE')" style="padding: -4px">
+                  <mat-icon>stay_current_landscape</mat-icon>
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+        <div [hidden]='phoneSelected != undefined'>
+          <div class="flex" style="justify-content: start;">
+            <mat-form-field class="form" appearance="outline" style="max-width: 48%;">
+              <mat-label>Width</mat-label>
+              <input matInput type="number" min="1" placeholder="Width" [(ngModel)]="this.customWidth" (ngModelChange)="updatePhoneCustomSize()">
+              &lt;!&ndash; value will be passed by the preview &ndash;&gt;
+            </mat-form-field>
+            <mat-form-field class="form" appearance="outline" style="max-width: 48%;">
+              <mat-label>Height</mat-label>
+              <input matInput type="number" min="1" placeholder="Height" [(ngModel)]="this.customHeight" (ngModelChange)="updatePhoneCustomSize()">
+              &lt;!&ndash; value will be passed by the preview &ndash;&gt;
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <mat-checkbox (click)='showHideCustom()' [labelPosition]="'before'">
+            {{ customScreenSize }}
+          </mat-checkbox>
+        </div>
+      </div>
+      <div style="margin-top: 48px;">
+        <div class="advanced-toggle">
+          <span>Advanced settings</span><mat-slide-toggle [(ngModel)]="showAdvanced"></mat-slide-toggle>
+        </div>
+        <div *ngIf="showAdvanced" id="advanced-options" class="advanced-options-container">
+          <div>
+            <mat-form-field appearance="outline" class="safe_space_form">
+              <mat-label>Screen safe space(padding)</mat-label>
+              <mat-select disabled disableOptionCentering>
+                <mat-option value="one">2px</mat-option>
+                <mat-option value="two">4px</mat-option>
+                <mat-option value="three">6px</mat-option>
+                <mat-option value="four">8px</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="safe_space">
+            <mat-checkbox disabled [labelPosition]="'before'">
+              {{ safeSpace }}
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+  <div class="delete" style="height: 6vh; width: 100%;">
+    <div style="cursor: pointer;">
+      <a (click)="openDeleteDialog()">Delete Page</a>
+    </div>
+  </div>
+</div>

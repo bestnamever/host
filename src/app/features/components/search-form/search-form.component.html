@@ -1,0 +1,6 @@
+<form ngForm (keydown.enter)="readValue($event)" class="search-form">
+  <mat-form-field class="searchbox" appearance="fill">
+    <mat-label>Search for a component</mat-label>
+    <input matInput placeholder="Ex. Button" type="search" (input)="updateValue($event)">
+  </mat-form-field>
+</form>

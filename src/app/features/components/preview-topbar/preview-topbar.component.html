@@ -1,0 +1,27 @@
+<div [ngStyle]="{'width': this.getWidth()}">
+    <div style="width: 100%; background-color: black">
+      <div *ngIf="phoneOptions?.largeNotch && isInPortraitMode() && !fullscreen" style="width: 100%; background-color: rgba(77, 157, 42, 0.8);" class="flex-two" [ngStyle]="{'justify-content': getNotchPosition()}">
+        <div class="largeNotch" [ngStyle]="{'width': phoneOptions?.largeNotchWidth, 'height': phoneOptions?.largeNotchHeight, 'border-radius': phoneOptions?.largeNotchRadius}"></div>
+      </div>
+      <div *ngIf="phoneOptions?.smallNotch && isInPortraitMode() && !fullscreen" style="width: 100%; background-color: rgba(77, 157, 42, 0.8);" class="flex-two" [ngStyle]="{'justify-content': getNotchPosition(), 'padding-left': phoneOptions?.smallNotchCustomLeftMargin, 'padding-right': phoneOptions?.smallNotchCustomRightMargin}">
+        <div class="smallNotch" [ngStyle]="{'width': phoneOptions?.smallNotchWidth, 'height': phoneOptions?.smallNotchWidth, 'border-radius': phoneOptions?.smallNotchRadius, 'margin-top': getNotchMarginTop()}"></div>
+      </div>
+      <mat-toolbar style="background-color: #4d9d2a">
+      <div class="flex">
+        <div>
+          <button mat-icon-button disabled style="color: white">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div>
+          <span style="color: whitesmoke">{{toptext}}</span>
+        </div>
+        <div>
+          <button mat-icon-button disabled style="color: white">
+            <mat-icon>notifications</mat-icon>
+          </button>
+        </div>
+      </div>
+      </mat-toolbar>
+    </div>
+</div>

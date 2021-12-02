@@ -1,0 +1,45 @@
+.logo {
+    margin-top: 10px;
+    float: left;
+    margin-right: 200px;
+}
+
+#topbar-container {
+    width: 1200px;
+    margin: 0 auto;
+    height: 70px;
+}
+
+.topbar {
+    height: 60px;
+    width: 100%;
+    text-align: center;
+}
+.topbar ul {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.topbar li {
+    list-style-type: none;
+    padding: 0px;
+    height: 24px;
+    display: inline;
+}
+
+.topbar li a {
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 55px;
+    padding: 15px 5px;
+    margin: 5px 40px;
+    opacity: 0.7;
+}
+
+.topbar li a:hover {
+    border-bottom: 3px solid #4D9D2A;
+}

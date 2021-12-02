@@ -1,0 +1,8 @@
+<div>
+  <div *ngIf="designUpdatedAt == undefined else isLoaded">
+    <mat-spinner diameter="36"></mat-spinner>
+  </div>
+  <ng-template #isLoaded>
+    <p class="text">Updated at {{this.designUpdatedAt}}</p>
+  </ng-template>
+</div>

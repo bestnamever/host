@@ -1,0 +1,39 @@
+<div *ngIf="isOpened" class="attribute-picker-wrapper">
+  <mat-toolbar color="primary" class="toolbar-header">
+    <mat-toolbar-row class="toolbar-row">
+      <span>Attribute Picker</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="container">
+    <div class="top-bar">
+    </div>
+    <div class="picker-container">
+      <div class="tabs">
+        <div class="left-tab tab">
+          <mat-toolbar color="primary" class="sub-header">
+            <mat-toolbar-row class="toolbar-row">
+              <span>Asset</span>
+            </mat-toolbar-row>
+          </mat-toolbar>
+          <div class="picker">
+            <app-tree-view treeType="ASSET"></app-tree-view>
+          </div>
+        </div>       
+        <div class="right-tab tab">
+          <mat-toolbar color="primary" class="sub-header">
+            <mat-toolbar-row class="toolbar-row">
+              <span>Attribute</span>
+            </mat-toolbar-row>
+          </mat-toolbar>
+          <div class="picker">
+            <app-tree-view treeType="ATTRIBUTE"></app-tree-view>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bar">
+        <a (click)="closePicker()">CANCEL</a>
+        <a (click)="submitSelection()">SELECT ATTRIBUTE</a>
+      </div>
+    </div>
+  </div>
+</div>

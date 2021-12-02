@@ -1,0 +1,113 @@
+.attribute-picker-wrapper{
+    width: 100%;
+    margin: 25px;
+    max-width: 625px;
+    aspect-ratio: 1/1;
+    position: fixed;
+    z-index: 10000;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px 5px rgba($color: #000000, $alpha: 0.25);
+    border-radius: 5px;
+
+    .container{
+        height: 100%;
+    }
+
+    .toolbar-header{
+        background: #4d9d2a;
+        height: 50px;
+        min-height: unset;
+        border-radius: 5px 5px 0px 0px;
+
+        .toolbar-row{
+            span{
+                margin: auto;
+                font-family: Roboto, sans-serif;
+                font-size: 16px;
+                font-weight: 500 !important;
+            }
+        }
+    }
+
+    .picker-container{
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+
+        .tabs{
+            flex-grow: 1;
+            display: flex;
+            max-height: calc(100% - 50px);
+
+            .tab{
+                flex: 1;
+
+                .mat-toolbar-multiple-rows{
+                    min-height: unset !important;
+                }
+
+                .sub-header{
+                    background: white;
+                    height: 50px;
+                    color: #4d9d2a;
+                    border-bottom: solid 2px darken($color: white, $amount: 15%);
+                    
+                    .toolbar-row{
+                        height: inherit !important;
+
+                        span{
+                            margin: auto;
+                            font-family: Roboto, sans-serif;
+                            font-size: 16px;
+                            font-weight: 500 !important;
+                        }
+                    }
+                }
+
+                &.right-tab, .right-tab .sub-header{
+                    border-left: solid 1px darken($color: white, $amount: 15%);
+                }
+
+                &.left-tab, .left-tab .sub-header{
+                    border-right: solid 1px darken($color: white, $amount: 15%);
+                }
+
+                .picker{
+                    max-height: calc(100% - 50px);
+                    overflow-y: scroll;
+
+                    .cdk-tree-node{
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
+
+        .bottom-bar{
+            height: max-content;
+            text-align: right;
+            padding: 15px 25px;
+            border-top: solid 2px darken($color: white, $amount: 15%);
+
+            a{
+
+                &.active{
+                    color: #4d9d2a;
+                }
+
+                display: inline-block;
+                width: max-content;
+                margin: 0px 10px;
+                color: #4d9d2a;
+                text-decoration: none;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<mat-tab-group mat-stretch-tabs animationDuration="0ms" [(selectedIndex)]="selectedIndex" style="height: 770px;">
+    <mat-tab label="Component Info">
+        <ng-template matTabContent>
+            <app-layout-rightbar-components></app-layout-rightbar-components>
+        </ng-template>
+    </mat-tab>
+<!--    <mat-tab label="Page">
+        <ng-template matTabContent>
+          <p>Test!</p>
+        </ng-template>
+    </mat-tab>-->
+    <mat-tab label="Settings">
+        <ng-template matTabContent>
+            <app-layout-screen></app-layout-screen>
+        </ng-template>
+    </mat-tab>
+
+</mat-tab-group>

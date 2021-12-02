@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Delete this {{data.title}}</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content class="content">Are you sure you want to delete this <a>{{data.component}}</a>?<br /><br />
+    Deleting this page is a <a>destructive</a> action, meaning that it cannot be reverted later</div>
+<div mat-dialog-actions>
+    <span mat-dialog-close mat-dialog-close="false" class="cancel">CANCEL</span>
+    <span mat-dialog-close mat-dialog-close="true" class="confirm">DELETE <a>{{data.title}}</a></span>
+</div>

@@ -1,0 +1,74 @@
+<div class="left-bar-wrapper">
+    <!-- <mat-tab-group mat-align-tabs="center" dynamicHeigh> -->
+    <!-- <mat-tab label="Component Browser"> -->
+    <!-- Component Browser tab -->
+    <mat-toolbar color="primary" class="toolbar-header">
+        <mat-toolbar-row class="toolbar-row">
+          <span>Component Browser</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="tab-component-browser tab-wrapper">
+        <div class="asset-filter-container">
+            <h3>Filter on asset type</h3>
+            <mat-form-field class="asset-filter" appearance="fill">
+                <mat-label>Choose an asset type</mat-label>
+                <mat-select disableOptionCentering [(value)]='selectedAssetType' (selectionChange)="updateAssetValue()">
+                    <mat-option *ngFor="let type of assetTypes" [value]="type.name">
+                        <div class="option">
+                            <or-icon icon="{{type.icon}}"></or-icon>
+                            {{formatAssetTypeName(type.name)}}
+                        </div>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="component-browser-container">
+            <h3>Browse components</h3>
+            <div id="component-list" class="component-list-wrapper">
+                <div *ngFor="let component of selectedComponents" class="component-card-wrapper" style="z-index: 999">
+                    <mat-grid-list cols="1" rowHeight="100px" style="z-index: 999">
+                        <mat-grid-tile colspan="1" rowspan="1" style="border: 0px solid black;z-index: 999">
+                            <div cdkDrag style="z-index: 100000" [cdkDragFreeDragPosition]="dragPosition"
+                                class="draggableComponent" (mousedown)="onDragStart($event, component)"
+                                (mouseup)="onDrop($event, component)">
+                                <app-component-thumbnail componentTitle={{component.componentTitle}}
+                                    iconCode={{component.iconCode}} componentType={{component.componentType}}>
+                                </app-component-thumbnail>
+                            </div>
+                            <div *ngIf="component.isdragging" class="draggableComponent"
+                                style="position: absolute; z-index: 999">
+                                <app-component-thumbnail componentTitle={{component.componentTitle}}
+                                    iconCode={{component.iconCode}} componentType={{component.componentType}}>
+                                </app-component-thumbnail>
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </mat-tab> -->
+    <!-- Layers tab -->
+    <!-- <mat-tab label="Layers">
+            <div class="tab-layers tab-wrapper">
+                <div class="heading-container">
+                    <h3>Layer Overview</h3>
+                </div>
+                <mat-selection-list [multiple]="false" class="layer-list">
+                    <mat-list-option class="layer-item">
+                        <mat-icon aria-hidden="false" aria-label="Component icon" class="component-icon">crop_3_2
+                        </mat-icon><span>Data Card - Temperature</span>
+                    </mat-list-option>
+                    <mat-list-option class="layer-item">
+                        <mat-icon aria-hidden="false" aria-label="Component icon" class="component-icon">crop_3_2
+                        </mat-icon><span>Data Card - Energy Output</span>
+                    </mat-list-option>
+                    <mat-list-option class="layer-item">
+                        <mat-icon aria-hidden="false" aria-label="Component icon" class="component-icon">
+                            insert_chart_outlined</mat-icon><span>Bar Chart</span>
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+        </mat-tab> -->
+    <!-- </mat-tab-group> -->
+</div>

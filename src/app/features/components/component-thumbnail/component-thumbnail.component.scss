@@ -1,0 +1,27 @@
+.component-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: all 300ms ease-out;
+    min-height: 70px;
+    min-width: 80px;
+    border-radius: 10px;
+
+    .component-icon-container{
+        margin-bottom: 5px;
+
+        .component-icon{
+            width: max-content;
+            height: max-content;
+            font-size: 32px;
+        }
+    }
+
+    .component-subtitle{
+        p{
+            font-size: 14px;
+        }
+    }
+}

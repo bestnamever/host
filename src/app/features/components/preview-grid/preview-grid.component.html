@@ -1,0 +1,47 @@
+<div class="flex-one">
+  <div class="flex-two">
+    <div *ngIf="fullscreen == false else screen" class="phoneContainer" [ngStyle]="{'aspect-ratio': this.getAspectRatio(), 'min-height': this.getPreviewHeight(), 'min-width': this.getPreviewWidth()}">
+      <div class="phone" [ngStyle]="{'border-radius': this.phoneOptions?.borderRadius, 'border-width': this.phoneOptions?.borderThickness, 'padding-left': this.getMarginLeft(), 'padding-right': this.getMarginRight()}">
+        <app-preview-topbar toptext="Homepage" [fullscreen]="false" [phoneOptions]="this.phoneOptions" [phoneOrientation]="this.phoneOrientation" [ngStyle]="{'margin-top': getMarginTop()}"></app-preview-topbar>
+        <div class="gridContainer" [ngStyle]="{'padding-bottom': getMarginBottom()}">
+          <gridster *ngIf="(dashboardComponents.length > 0 || isDragging) else listisempty" [options]="gridOptions" class="customGrid">
+            <gridster-item class="item" [item]="component.gridsterItem" *ngFor="let component of dashboardComponents"
+              (click)="selectItem(component)" (touchend)="selectItem(component)" onkeypress="deletion()">
+              <div class="widgetContainer" [ngStyle]="{'box-shadow': getBorderState(component)}">
+                <!--<p>Test {{component.widgetData}}</p>-->
+                <app-preview-parentwidget [widgetId]="component.gridsterItem.id" >
+                </app-preview-parentwidget>
+              </div>
+            </gridster-item>
+          </gridster>
+          <ng-template #listisempty>
+            <div class="flex-two" style="height: 100%; text-align: center; background-color: #FFFFFF;">
+              <img src="assets/move.png" style="width: 3vw; aspect-ratio: 1; margin-bottom: 24px;" />
+              <p style="font-weight: 500">Get started building your App.</p>
+              <p>
+                Use the component browser on the left<br />
+                to drag a component onto this screen to<br />
+                get started!
+              </p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <ng-template #screen>
+      <app-preview-topbar toptext="Homepage" [fullscreen]="true" [phoneOptions]="this.phoneOptions" [phoneOrientation]="this.phoneOrientation"></app-preview-topbar>
+      <div class="gridContainer" style="width: 100vw">
+        <gridster [options]="gridOptions" class="customGrid">
+          <gridster-item class="item" [item]="component.gridsterItem" *ngFor="let component of dashboardComponents"
+                         (click)="selectItem(component)">
+            <div class="widgetContainer" [ngStyle]="{'box-shadow': getBorderState(component)}">
+              <!--<p>Test {{component.widgetData}}</p>-->
+              <app-preview-parentwidget [widgetId]="component.gridsterItem.id"></app-preview-parentwidget>
+            </div>
+          </gridster-item>
+        </gridster>
+      </div>
+    </ng-template>
+    <app-preview-updatedtext *ngIf="fullscreen == false" style="margin-top: 2.5em;"></app-preview-updatedtext>
+  </div>
+</div>

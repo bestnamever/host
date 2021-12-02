@@ -1,0 +1,40 @@
+.top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50px;
+  box-shadow: 0 3px 6px #00000033;
+  z-index: 2;
+}
+.left {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  bottom: 0;
+  width: 400px;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 3px 6px #00000033;
+}
+.right {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  width: 400px;
+  z-index: 1;
+  box-shadow: 0 3px 6px #00000033;
+}
+.main {
+  position: absolute;
+  left: 400px;
+  right: 400px;
+  top: 50px;
+  bottom: 0;
+  background-color: #f5f5f5;
+}
+
+p {
+  margin-top: 10px;
+  margin-left: 10px;
+}

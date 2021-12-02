@@ -1,1 +1,148 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Custom palette
+$openremote-brand: (
+  50: #eef8e8,
+  100: #d5edc5,
+  200: #b9e09f,
+  300: #9cd478,
+  400: #86ca5a,
+  500: #70c13c,
+  600: #61b134,
+  700: #4d9d2a,
+  800: #388920,
+  900: #03670d,
+  A100: #000000,
+  A200: #000000,
+  A400: #000000,
+  A700: #000000,
+  contrast: (
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$VisualDesigner-frontend-primary: mat.define-palette($openremote-brand);
+$VisualDesigner-frontend-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$VisualDesigner-frontend-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$VisualDesigner-frontend-theme: mat.define-light-theme((
+  color: (
+    primary: $VisualDesigner-frontend-primary,
+    accent: $VisualDesigner-frontend-accent,
+    warn: $VisualDesigner-frontend-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($VisualDesigner-frontend-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+h1 { // Big Titles and Statistics and stuff
+  font-weight: 700 !important;
+  font-size: 31px !important;
+  color: #4d9d2a !important;
+  letter-spacing: 0.93px !important;
+  line-height: 31px !important;
+}
+
+h2 { // Bigger titles for in the App Preview for example
+  font-weight: bold !important;
+  font-size: 17px !important;
+  color: #4C4C4C !important;
+  letter-spacing: 0 !important;
+  line-height: 20px !important;
+}
+
+h3 { // Sidebar Title & Headings
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  color: #4C4C4C !important;
+  letter-spacing: 0 !important;
+  line-height: 19px !important;
+}
+
+.text { // Sidebar comments & regular text
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  color: #4C4C4C !important;
+  letter-spacing: 0 !important;
+  line-height: 16px !important;
+}
+
+.cardSubtext {
+  font-weight: 400;
+  font-size: 9px;
+  color: #4C4C4C;
+  letter-spacing: 0px;
+  line-height: 9px;
+}
+.title {
+  color: green;
+}
+
+gridster .gridster-column {
+  outline: 1px solid lightgray;
+}
+gridster .gridster-row {
+  outline: 1px solid lightgray;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #D0D0D0;
+  // border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #A0A0A0;
+  // border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  // background: #b30000;
+}
+

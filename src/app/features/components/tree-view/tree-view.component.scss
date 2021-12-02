@@ -1,0 +1,9 @@
+::ng-deep mat-tree-node.mat-tree-node{
+    &:hover{
+        cursor: pointer;
+    }
+
+    &[aria-selected="true"]{
+        color: green;
+    }
+}
